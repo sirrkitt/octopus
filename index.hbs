@@ -1,0 +1,27 @@
+<header>
+    {{@blog.title}}
+    {{@blog.description}}
+</header>
+
+
+
+
+<!-- This is the post loop - each post will be output using this markup -->
+{{#foreach 'posts'}}
+    <article class="{{post_class}}">
+        <header class="post-header">
+            <a href="{{url}}">{{title}}</a>
+        </header>
+        <section class="post-excerpt">
+            <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">...</a></p>
+        </section>
+        <footer class="post-meta">
+            {{#if author.profile_image}}
+                <img src="{{author.profile_image}}" alt="Author image" />
+            {{/if}}
+            {{author}}
+            {{tags prefix=" on"}}
+            <time class="post-date" datetime="{{date format='YYYY-MM-DD}'}}">{{date format="DD MMMM YYYY"}}</time>
+        </footer>
+    </article>
+{{/foreach}}
